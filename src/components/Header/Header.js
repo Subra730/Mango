@@ -1,10 +1,8 @@
-/*eslin t-disable jsx-a11y/accessible-emoji */
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { CSSTransition } from "react-transition-group";
-
-import { HashRouter, NavLink, Route } from 'react-router-dom';
-
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const [isNavVisible, setNavVisibility] = useState(false);
@@ -33,39 +31,26 @@ export default function Header() {
   };
 
   return (
-
     <header className="Header">
-    {/*  <img src={require("./src/assets/TM2D.jpg")} className="Logo" alt="logo" />*/}
+      <img src={require("../Logo/TM2D.jpg")} className="Logo" alt="logo" />
       <CSSTransition
         in={!isSmallScreen || isNavVisible}
         timeout={350}
         classNames="NavAnimation"
-        unmountOnExit>
-
-        <nav className="Nav">
-
-          <HashRouter>
-
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/">Pricing</NavLink>
-            <NavLink to="/">Test Tips</NavLink>
-            <NavLink to="/">Register</NavLink>
-
-            <Route exact path="/" ></Route>
-            <Route exact path="/" ></Route>
-            <Route exact path="/" ></Route>
-            <Route exact path="/" ></Route>
-
-          </HashRouter>
+        unmountOnExit
+      >
+        <nav className="Nav">           
+          <NavLink to="/Home">Home</NavLink>
+          <NavLink to="/">Pricing</NavLink>
+          <NavLink to="/">Test Tips</NavLink>
+          <NavLink to="/">Register</NavLink>
 
         </nav>
 
       </CSSTransition>
       <button onClick={toggleNav} className="Burger">
-        🍔
+      <span role="img" aria-label="Burger">🚗</span>
       </button>
     </header>
-
-
   );
 }
