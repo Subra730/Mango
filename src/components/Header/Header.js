@@ -4,6 +4,7 @@ import "./Header.css";
 import { CSSTransition } from "react-transition-group";
 import { NavLink } from "react-router-dom";
 
+
 export default function Header() {
   const [isNavVisible, setNavVisibility] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -39,17 +40,16 @@ export default function Header() {
         classNames="NavAnimation"
         unmountOnExit
       >
-        <nav className="Nav">           
-          <NavLink to="/Home">Home</NavLink>
-          <NavLink to="/">Pricing</NavLink>
-          <NavLink to="/">Test Tips</NavLink>
-          <NavLink to="/">Register</NavLink>
-
+        <nav className="Nav">
+          <NavLink to="/Home" onClick={toggleNav}>Home</NavLink>
+          <NavLink to="/Pricing" onClick={toggleNav} >Pricing</NavLink>
+          <NavLink to="/" onClick={toggleNav} >Test Tips</NavLink>
+          <NavLink to="/" onClick={toggleNav} >Register</NavLink>
         </nav>
 
       </CSSTransition>
       <button onClick={toggleNav} className="Burger">
-      <span role="img" aria-label="Burger">🚗</span>
+        <span role="img" aria-label="Burger">🚗</span>
       </button>
     </header>
   );
